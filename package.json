@@ -1,19 +1,19 @@
 {
   "name": "flickr-ui",
-  "version": "1.0.0",
-  "description": "Flickr UI",
-  "main": "index.js",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/lakasdp/flickr-ui.git"
+  "dependencies": {
+    "next": "12.0.8",
+    "react": "17.0.2",
+    "react-dom": "17.0.2"
   },
-  "author": "lakasdp",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/lakasdp/flickr-ui/issues"
-  },
-  "homepage": "https://github.com/lakasdp/flickr-ui#readme"
+  "devDependencies": {
+    "eslint": "8.7.0",
+    "eslint-config-next": "12.0.8"
+  }
 }
