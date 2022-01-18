@@ -23,8 +23,8 @@ export default function Home() {
             <div className="page-search-asset"></div>
             
             <div className="search-input-wrapper">
-              <div class="input-group">
-                <input type="text" class="form-control" placeholder="Search by tags here!"/>
+              <div className="input-group">
+                <input type="text" className="form-control" placeholder="Search by tags here!"/>
               </div>
 
               <button className="btn btn-primary"></button>
