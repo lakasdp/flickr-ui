@@ -34,7 +34,7 @@ export default function Home() {
 
           <div className="page-images-wrapper">
             { imageList && imageList.length > 0 ? 
-              imageList.map(item => <ImageCard />)
+              imageList.map((item, index) => <ImageCard key={index}/>)
               : 
               <div className="empty-image">
                 <p className="empty-text">No image found :(</p>
