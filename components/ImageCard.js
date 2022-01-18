@@ -9,7 +9,7 @@ export default function ImageCard({
   return (
     <div className="image-card-component" key={index}>
       <div className="card-asset-wrapper">
-        <Image src={url} height="200" width="288" placeholder="img-placeholder.png"/>
+        { url ? <Image src={url} height="200" width="288" placeholder="/img-placeholder.png"/> : "" }
       </div>
 
       <div className="card-info-wrapper">

@@ -9,6 +9,7 @@ import Layout from "../components/layout/Layout";
 
 import ImageCard from "../components/ImageCard";
 import Pagination from "../components/Pagination";
+import LoadingImage from '../components/LoadingImage';
 
 export default function Home() {
 
@@ -23,18 +24,23 @@ export default function Home() {
   };
 
   const [page, setPage] = useState(1);
-  const handlePage = (page) => setPage(page);
+  const handlePage = (page) => { 
+    if (page !== 0 && page !== imageMetas.total) setPage(page)
+  }
 
   // Fetch Data
-  //! Add Image Loading, using isLoading setState, and Add Pagination!
+  const [isLoading, setIsLoading] = useState(true);
   const [imageMetas, setImageMetas] = useState({});
   const [imageList, setImageList] = useState([]);
+
   const fetchImages = async () => {
+    setIsLoading(true);
     const imgFetch = await axios.get(`${ENDPOINT}/pictures?page=${page}&tags=${tag}`)
                                 .then(response => response.data)
                                 .catch(error => console.error(error));
     setImageList(imgFetch.data); 
     setImageMetas(imgFetch.meta);
+    setIsLoading(false);
   };
 
   useEffect(() => {
@@ -66,21 +72,23 @@ export default function Home() {
           { imageMetas && imageMetas.total > 0 ? <p className="showing-text">Showing Random Photos ({(16 * (page - 1) + 1)} - {16 * page} of {imageMetas.total})</p> : "" }
 
           <div className="page-images-wrapper">
-            { imageMetas && imageMetas.total > 0 ? 
-            imageList.map((item, index) => 
-              <ImageCard key={index} index={index} title={item.title} url={item.url} author={item.ownername}/>
-              )
-              : 
-              <div className="empty-image">
-                <p className="empty-text">No image found :(</p>
-              </div>
+            { 
+              isLoading ?
+                <LoadingImage /> 
+                :
+                imageMetas && imageMetas.total > 0 ? 
+                  imageList.map((item, index) => 
+                  <ImageCard key={index} index={index} title={item.title} url={item.url} author={item.ownername}/>
+                  )
+                  : 
+                  <div className="empty-image">
+                    <p className="empty-text">No image found :(</p>
+                  </div>
             }
           </div>
 
-          { console.log(imageMetas) }
-
           <div className="page-pagination-wrapper">
-            <Pagination page={page} totalPage={imageMetas.pages} />
+            <Pagination currentPage={page} totalPage={imageMetas.pages} changePage={(val) => handlePage(val)}/>
           </div>
 
         </div>
