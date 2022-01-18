@@ -1,5 +1,6 @@
 .rathos-homepage {
   position: relative;
+  overflow-x: hidden;
 
   .page-search-wrapper {
     position: relative;
@@ -43,9 +44,9 @@
   }
 
   .page-images-wrapper {
-    display: grid;
-    grid-gap: 36px;
-    grid-template-columns: repeat(4, calc(25% - 36px) [col-start]);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
     min-height: 25vh;
     margin-top: 24px;
 
@@ -67,4 +68,28 @@
     margin-bottom: 24px;
   }
 
+}
+
+@media (max-width: 771px) {
+  .rathos-homepage {
+
+    .page-search-wrapper {
+      .search-input-wrapper {
+        .input-group {
+          width: 81.625%;
+          margin-right: 1.75%;
+        }
+
+        .btn {
+          width: 16.625%;
+        }
+      }
+    }
+
+    .page-images-wrapper {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+  }
 }
