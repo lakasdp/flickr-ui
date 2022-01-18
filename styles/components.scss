@@ -16,19 +16,19 @@
       font-size: 14px;
       font-weight: 700;
       margin-bottom: 0px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
-    .card-author-and-date {
+    .card-author {
       display: flex;
-      justify-content: space-between;
-      align-items: center;
       .author-text {
         font-size: 12px;
         font-weight: 600;
         color: #707070;
-      }
-      .date-text {
-        font-size: 12px;
-        font-weight: 400;
+        .text-title {
+          color: #000
+        }
       }
     }
   }

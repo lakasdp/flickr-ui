@@ -1,15 +1,21 @@
 import React from 'react'
+import Image from 'next/image';
 
-export default function ImageCard({ imgUrl, imgTitle="Sample Photos", imgAuthor="Lakas D P", imgUpload="01-01-2021" }) {
+export default function ImageCard({ 
+  index, 
+  title="No Title", 
+  url,
+  author }) {
   return (
-    <div className="image-card-component">
-      <div className="card-asset-wrapper"></div>
+    <div className="image-card-component" key={index}>
+      <div className="card-asset-wrapper">
+        <Image src={url} height="200" width="288" placeholder="img-placeholder.png"/>
+      </div>
 
       <div className="card-info-wrapper">
-        <div className="card-title">{imgTitle}</div>
-        <div className="card-author-and-date">
-          <p className="author-text">{imgAuthor}</p>
-          <p className="date-text">{imgUpload}</p>
+        <div className="card-title">{title}</div>
+        <div className="card-author">
+          <p className="author-text">By: {author} </p>
         </div>
       </div>
     </div>

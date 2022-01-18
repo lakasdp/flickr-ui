@@ -37,11 +37,17 @@
 
   }
 
+  .showing-text {
+    font-size: 14px;
+    color: #707070;
+  }
+
   .page-images-wrapper {
     display: grid;
     grid-gap: 36px;
     grid-template-columns: repeat(4, calc(25% - 36px) [col-start]);
     min-height: 25vh;
+    margin-top: 24px;
 
     .empty-image {
       width: 100%;
