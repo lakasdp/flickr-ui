@@ -1,10 +1,31 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 export default function Pagination({ currentPage, totalPage, changePage }) {
+  
+  // State Management
+  const [pageList, setPageList] = useState([]);
 
-  let pageList = [];
-  if (totalPage < 5) for (let i = 0; i <= totalPage; i++) pageList.push(i)
-  else pageList = [1, 2, 3, 4, 5];
+  const handlePage = () => {
+    let newPageList = [];
+    
+    if (totalPage < 5) for (let i = 1; i <= totalPage; i++) {
+      newPageList.push(i);
+      setPageList(newPageList);
+    } else if (Math.floor(currentPage / 2 >= 1)) {
+      let minPage = (currentPage - 2 > 0) ? currentPage - 2 : 1;
+      let maxPage = currentPage + 2;
+      for (minPage; minPage <= maxPage; minPage++) newPageList.push(minPage);
+      setPageList(newPageList);
+    } 
+    else {
+      setPageList([1, 2, 3, 4, 5]);
+    } 
+  }
+
+  // Run Everytime Page is changed
+  useEffect(() => {
+    handlePage()
+  }, [currentPage, totalPage]);
 
   return (
     <div className="pagination-component">

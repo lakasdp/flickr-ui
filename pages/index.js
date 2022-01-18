@@ -25,7 +25,7 @@ export default function Home() {
 
   const [page, setPage] = useState(1);
   const handlePage = (page) => { 
-    if (page !== 0 && page !== imageMetas.total) setPage(page)
+    if (page !== 0 && page !== imageMetas.pages + 1) setPage(page)
   }
 
   // Fetch Data
