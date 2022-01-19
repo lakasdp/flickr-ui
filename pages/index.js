@@ -62,7 +62,7 @@ export default function Home() {
                   <input type="text" className="form-control" placeholder="Search by tags here!" onInput={(val) => handleInputTag(val.target.value)}/>
                 </div>
 
-                <button className="btn btn-primary"></button>
+                <button className="btn btn-primary">Search</button>
               </div>
 
             </form>
